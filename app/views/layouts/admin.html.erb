@@ -12,9 +12,11 @@
   </head>
 
   <body>
-    <main class="flex">
+    <main class="flex w-full">
       <%= render 'shared/header_admin' %>
-      <%= yield %>
+      <div class="w-full p-8">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
