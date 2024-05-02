@@ -17,6 +17,7 @@ module Ecommerce
     config.autoload_lib(ignore: %w(assets tasks))
     config.i18n.available_locales = [:en, :es]
     config.i18n.default_locale = :es
+    config.active_storage.variant_processor = :mini_magick
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

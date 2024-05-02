@@ -3,7 +3,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mb-8">
     <h1 class="font-bold text-4xl">Categories</h1>
     <%= link_to "New category", new_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
@@ -11,6 +11,7 @@
   <div>
     <table class="w-full table">
       <thead>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Image</th>
         <th class="border border-slate-300 p-3 text-left bg-slate-50">Name</th>
         <th class="border border-slate-300 p-3 text-left bg-slate-50">Description</th>
         <th class="border border-slate-300 p-3 text-left bg-slate-50">Actions</th>
@@ -18,6 +19,9 @@
       <tbody>
         <%@categories.each do |category| %>
           <tr id="<%= dom_id category %>">
+            <td data-label="Image" class="border border-slate-300 bg-white text-left p-4">
+              <%= category.image.present? ? image_tag(category.image.variant(:thumb)) : image_tag("https://via.placeholder.com/50") %>
+            </td>
             <td data-label="Name" class="border border-slate-300 bg-white text-left p-4"><%= category.name %></td>
             <td data-label="Descrition" class="border border-slate-300 bg-white text-left p-4"><%= category.description %></td>
             <td data-label="Action" class="border border-slate-300 bg-white text-left p-4">
