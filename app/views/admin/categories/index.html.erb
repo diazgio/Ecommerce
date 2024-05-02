@@ -5,7 +5,7 @@
 
   <div class="flex justify-between items-center mb-8">
     <h1 class="font-bold text-4xl">Categories</h1>
-    <%= link_to "New category", new_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to "New category", new_admin_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div>
@@ -25,7 +25,7 @@
             <td data-label="Name" class="border border-slate-300 bg-white text-left p-4"><%= category.name %></td>
             <td data-label="Descrition" class="border border-slate-300 bg-white text-left p-4"><%= category.description %></td>
             <td data-label="Action" class="border border-slate-300 bg-white text-left p-4">
-              <%= link_to 'Show', category_path(category) %> | <%= link_to 'Edit', edit_category_path(category) %> | <%= link_to 'Destroy', category_path(category), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to destroy this category?" } %>
+              <%= link_to 'Show', admin_category_path(category) %> | <%= link_to 'Edit', edit_admin_category_path(category) %> | <%= link_to 'Destroy', admin_category_path(category), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to destroy this category?" } %>
             </td>
           </tr>
         <% end %>
