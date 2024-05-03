@@ -19,6 +19,11 @@
     <%= product.category&.name %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Active:</strong>
+    <%= product.active %>
+  </p>
+
   <div class="my-5">
     <strong class="block font-medium mb-1">Images:</strong>
     <% if product.images.any? %>

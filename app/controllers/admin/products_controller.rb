@@ -36,14 +36,17 @@ class Admin::ProductsController < AdminController
 
   # PATCH/PUT /admin/products/1 or /admin/products/1.json
   def update
-    respond_to do |format|
-      if @admin_product.update(product_params)
-        format.html { redirect_to admin_product_url(@admin_product), notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @admin_product }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @admin_product.errors, status: :unprocessable_entity }
+    @admin_product = Product.find(params[:id])
+    byebug
+    if @admin_product.update(product_params.reject { |k| k["images"] })
+      if product_params[:images]
+        product_params[:images].each do |image|
+          @admin_product.images.attach(image)
+        end
       end
+      redirect_to admin_product_url(@admin_product), notice: "Product was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -65,6 +68,9 @@ class Admin::ProductsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :category_id, images: [])
+      params.require(:product).permit(
+        :name, :description,
+        :price, :category_id, :active,
+        images: [])
     end
 end
