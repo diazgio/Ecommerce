@@ -1,0 +1,35 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="font-bold text-4xl">Orders</h1>
+    <%= link_to "New order", new_admin_order_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div>
+    <table class="w-full table">
+      <thead>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Customer Email</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Fulfilled</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Total</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Addrees</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Actions</th>
+      </thead>
+      <tbody>
+        <%@admin_orders.each do |order| %>
+          <tr id="<%= dom_id order %>">
+            <td data-label="Customer Email" class="border border-slate-300 bg-white text-left p-4"><%= order.customer_email %></td>
+            <td data-label="Fulfilled" class="border border-slate-300 bg-white text-left p-4"><%= order.fulfilled %></td>
+            <td data-label="Total" class="border border-slate-300 bg-white text-left p-4"><%= number_to_currency(order.total) %></td>
+            <td data-label="Addrees" class="border border-slate-300 bg-white text-left p-4"><%= order.address %></td>
+            <td data-label="Action" class="border border-slate-300 bg-white text-left p-4">
+              <%= link_to 'Show', admin_order_path(order) %> | <%= link_to 'Edit', edit_admin_order_path(order) %> | <%= link_to 'Destroy', admin_order_path(order), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to destroy this order?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

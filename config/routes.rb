@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
+    resources :orders
     resources :categories
     resources :products do
       resources :stocks
