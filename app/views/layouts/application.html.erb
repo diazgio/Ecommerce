@@ -12,11 +12,10 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'shared/header_user' %>
-    </header>
+    <%= render 'shared/header_user' %>
     <main class="container mx-auto mt-28 max-w-7xl px-2 sm:px-6 lg:px-8">
       <%= yield %>
     </main>
+    <%= render 'shared/footer_user' %>
   </body>
 </html>
