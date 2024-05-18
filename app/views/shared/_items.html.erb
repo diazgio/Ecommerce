@@ -5,6 +5,11 @@
     turbo_confirm: 'Are you sure?'
   } %>
 <% else %>
-  <%= link_to 'Log in', '#', class: "mx-2 text-white hover:text-gray-200 font-bold text-xl" %>
-  <%= link_to 'Sign up', '#', class: "mx-2 bg-white text-blue-500 px-4 py-2 rounded-full hover:bg-blue-400 hover:text-white transition duration-300 font-bold" %>
+  <div class="flex items-center justify-between">
+    <%= link_to '#', class: 'text-white hover:underline py-2 rounded-md text-md font-medium' do %>
+      <%= icon 'fa-solid', 'shopping-cart' %>
+    <% end %>
+    <%= link_to 'Log in', '#', class: "mx-2 text-white hover:text-gray-200 font-bold text-xl" %>
+    <%= link_to 'Sign up', '#', class: "mx-2 bg-white text-blue-500 px-4 py-2 rounded-full hover:bg-blue-400 hover:text-white transition duration-300 font-bold" %>
+  </div>
 <% end %>
