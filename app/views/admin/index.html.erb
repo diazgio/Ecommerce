@@ -46,4 +46,30 @@
       <canvas id="revenueChart"></canvas>
     </div>
   </div>
+
+  <div class="flex flex-col w-full">
+    <h2 class="text-2xl text-gray-800 mb-4 font-medium">Recent Unfulfilled Orders</h2>
+    <table class="w-full table">
+      <thead>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">N°</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Customer</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Date</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Amount</th>
+      </thead>
+      <tbody>
+        <%@orders.each_with_index do |order, index| %>
+          <tr id="<%= dom_id order %>">
+            <td data-label="N°" class="border border-slate-300 bg-white text-left p-4">
+              <%= link_to (index + 1), admin_order_path(order), class: "underline" %>
+            </td>
+            <td data-label="Customer" class="border border-slate-300 bg-white text-left p-4"><%= order.customer_email %></td>
+            <td data-label="Date" class="border border-slate-300 bg-white text-left p-4"><%= order.created_at.strftime("%B %d, %Y at %I:%M %p") %></td>
+            <td data-label="Amount" class="border border-slate-300 bg-white text-left p-4">
+              <%= number_to_currency(order.total) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
