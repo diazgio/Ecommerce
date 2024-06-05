@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :products, only: [:show]
   get "admin" => "admin#index"
+  get "cart" => "cart#show"
 end
