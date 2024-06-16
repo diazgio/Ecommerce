@@ -1,8 +1,36 @@
 <div class="min-h-screen">
-  <h1>Cart Page</h1>
+  <h1 class="font-bold text-2xl mb-5">Cart Page</h1>
   <div id="errorContainer"></div>
   <div data-controller="cart">
-    <div class="mt-4 font-medium" id="total"></div>
+    <div class="flex w-full gap-4">
+      <div id="cart-items" class="w-1/2">
+        <h2 class="font-bold">Cart Items: </h2>
+      </div>
+      <div class="address-details w-1/2">
+        <h2 class="font-bold mb-3">Detalles de la dirección</h2>
+
+        <div class="flex flex-col gap-3">
+          <label for="street_name" class="font-bold">Nombre de la calle</label>
+          <input type="text" id="street_name" name="street_name" data-cart-target="streetName" required>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <label for="street_number" class="font-bold">Número de la calle</label>
+          <input type="text" id="street_number" name="street_number" data-cart-target="streetNumber" required>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <label for="email" class="font-bold">Correo electrónico</label>
+          <input type="email" id="email" name="email" data-cart-target="email" required>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <label for="zip_code" class="font-bold">Código postal</label>
+          <input type="text" id="zip_code" name="zip_code" data-cart-target="zipCode" required>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 font-medium w-1/2" id="total"></div>
     <button class="mt-6 py-2 px-4 bg-gray-500 hover:bg-gray-600 rounded text-white" data-action="click->cart#checkout">Checkout</button>
     <button class="py-2 px-4 bg-gray-500 hover:bg-gray-600 rounded text-white" data-action="click->cart#clear">Clear Cart</button>
   </div>

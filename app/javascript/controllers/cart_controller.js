@@ -2,13 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="cart"
 export default class extends Controller {
+  static targets = ["streetName", "streetNumber", "email", "zipCode"]
+
   initialize() {
     console.log("Cart controller initialized");
     const cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) {
       return
     }
-
+    const cartItems = document.getElementById("cart-items");
     let total = 0;
 
     for(let i=0; i < cart.length; i++) {
@@ -24,7 +26,7 @@ export default class extends Controller {
       deleteButton.value = JSON.stringify({id: item.id, size: item.size});
       deleteButton.addEventListener("click", this.removeFromCart);
       div.appendChild(deleteButton);
-      this.element.prepend(div);
+      cartItems.append(div);
     }
     const totalEl = document.createElement("div");
     totalEl.innerHTML = `Total: S/.${total}`;
@@ -51,9 +53,20 @@ export default class extends Controller {
 
   checkout() {
     const cart = JSON.parse(localStorage.getItem("cart"));
+    const streetName = this.streetNameTarget.value;
+    const streetNumber = this.streetNumberTarget.value;
+    const email = this.emailTarget.value;
+    const zipCode = this.zipCodeTarget.value;
+
     const payload = {
       authenticity_token: "",
-      cart: cart
+      cart: cart,
+      shipping_details: {
+        street_name: streetName,
+        street_number: streetNumber,
+        email: email,
+        zip_code: zipCode
+      }
     };
 
     const csrfToken = document.querySelector("[name='csrf-token']").content;
