@@ -88,3 +88,57 @@
       float: left;
   }
 }
+.pagy {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+  a {
+    font-weight: bold;
+    border: 1px solid rgb(52, 52, 52);
+    padding: 5px 5px;
+    border-radius: 5px;
+  }
+
+
+  a[aria-label="Previous"][aria-disabled="true"] {
+    background: #ddd;
+    color: black;
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+  }
+  
+  a[aria-label="Previous"]:not([aria-disabled="true"]) {
+    background: rgb(17, 121, 249);
+    color: white;
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+  }
+
+  a[aria-label="Next"][aria-disabled="true"] {
+    background: #ddd;
+    color: black;
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+  }
+  
+  /* Estilo cuando aria-disabled no es "true" */
+  a[aria-label="Next"]:not([aria-disabled="true"]) {
+    background: rgb(17, 121, 249);
+    color: white;
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+  }
+
+  .current {
+    background: rgb(17, 121, 249);
+    color: white;
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+  }
+}
