@@ -50,6 +50,7 @@ gem "devise", "~> 4.9"
 gem "font-awesome-sass", "~> 6.5.1"
 gem "mercadopago-sdk"
 gem "pagy"
+gem "aws-sdk-s3"
 
 
 group :development, :test do
