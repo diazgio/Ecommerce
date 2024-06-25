@@ -19,7 +19,7 @@
       <tbody>
         <%@categories.each do |category| %>
           <tr id="<%= dom_id category %>">
-            <td data-label="Image" class="border border-slate-300 bg-white text-left p-4">
+            <td data-label="Image" class="border border-slate-300 bg-white py-4 px-0 flex justify-center">
               <%= category.image.present? ? image_tag(category.image.variant(:thumb)) : image_tag("https://via.placeholder.com/50") %>
             </td>
             <td data-label="Name" class="border border-slate-300 bg-white text-left p-4"><%= category.name %></td>
