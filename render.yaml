@@ -1,12 +1,12 @@
 databases:
   - name: ecommerce_production
-    databaseName: ecommerce_production
-    user: ecommerce_production
+    databaseName: ecommerce_production_oz5u
+    user: ecommerce
     plan: free
 
 services:
   - type: web
-    name: ecommerce
+    name: Ecommerce
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
