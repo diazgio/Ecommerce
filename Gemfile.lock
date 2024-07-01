@@ -342,6 +342,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mercadopago-sdk
+  mini_magick
   pagy
   pg (~> 1.1)
   puma (>= 5.0)

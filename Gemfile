@@ -51,6 +51,8 @@ gem "font-awesome-sass", "~> 6.5.1"
 gem "mercadopago-sdk"
 gem "pagy"
 gem "aws-sdk-s3"
+gem 'mini_magick'
+
 
 
 group :development, :test do
