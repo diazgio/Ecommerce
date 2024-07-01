@@ -41,7 +41,7 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /admin/products/1 or /admin/products/1.json
   def update
     @admin_product = Product.find(params[:id])
-    byebug
+    
     if @admin_product.update(product_params.reject { |k| k["images"] })
       if product_params[:images]
         product_params[:images].each do |image|
